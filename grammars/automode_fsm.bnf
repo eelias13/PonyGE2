@@ -1,0 +1,172 @@
+<FSM> ::= --fsm-config --nstates 4 <node-0> <transitions-0> <node-1> <transitions-1> <node-2> <transitions-2> <node-3> <transitions-3>
+
+
+
+<node-0> :=   <explore-0> | <stop-0> |<phototaxis-0> | <anti_phototaxis-0> | <attraction-0> | <repulsion-0>
+
+<explore-0>           ::= --s0 0 --rwm0 GE_RANGE:100
+<stop-0>              ::= --s0 1
+<phototaxis-0>        ::= --s0 2
+<anti_phototaxis-0>   ::= --s0 3
+<attraction-0>        ::= --s0 4 --att0 GE_RANGE:5
+<repulsion-0>         ::= --s0 4 --rep0 GE_RANGE:5
+
+
+<node-1> :=   <explore-1> | <stop-1> |<phototaxis-1> | <anti_phototaxis-1> | <attraction-1> | <repulsion-1>
+
+<explore-1>           ::= --s1 0 --rwm1 GE_RANGE:100
+<stop-1>              ::= --s1 1
+<phototaxis-1>        ::= --s1 2
+<anti_phototaxis-1>   ::= --s1 3
+<attraction-1>        ::= --s1 4 --att1 GE_RANGE:5
+<repulsion-1>         ::= --s1 4 --rep1 GE_RANGE:5
+
+
+<node-2> :=   <explore-2> | <stop-2> |<phototaxis-2> | <anti_phototaxis-2> | <attraction-2> | <repulsion-2>
+
+<explore-2>           ::= --s2 0 --rwm2 GE_RANGE:100
+<stop-2>              ::= --s2 1
+<phototaxis-2>        ::= --s2 2
+<anti_phototaxis-2>   ::= --s2 3
+<attraction-2>        ::= --s2 4 --att2 GE_RANGE:5
+<repulsion-2>         ::= --s2 4 --rep2 GE_RANGE:5
+
+
+<node-3> :=   <explore-3> | <stop-3> |<phototaxis-3> | <anti_phototaxis-3> | <attraction-3> | <repulsion-3>
+
+<explore-3>           ::= --s3 0 --rwm3 GE_RANGE:100
+<stop-3>              ::= --s3 1
+<phototaxis-3>        ::= --s3 2
+<anti_phototaxis-3>   ::= --s3 3
+<attraction-3>        ::= --s3 4 --att3 GE_RANGE:5
+<repulsion-3>         ::= --s3 4 --rep3 GE_RANGE:5
+
+
+
+
+<transitions-0> ::= --n0 1  <transition-0-0>  | --n0 2  <transition-0-0>  <transition-0-1>  | --n0 3  <transition-0-0>  <transition-0-1>  <transition-0-2>  | --n0 4  <transition-0-0>  <transition-0-1>  <transition-0-2>  <transition-0-3> 
+
+<transitions-1> ::= --n1 1  <transition-1-0>  | --n1 2  <transition-1-0>  <transition-1-1>  | --n1 3  <transition-1-0>  <transition-1-1>  <transition-1-2>  | --n1 4  <transition-1-0>  <transition-1-1>  <transition-1-2>  <transition-1-3> 
+
+<transitions-2> ::= --n2 1  <transition-2-0>  | --n2 2  <transition-2-0>  <transition-2-1>  | --n2 3  <transition-2-0>  <transition-2-1>  <transition-2-2>  | --n2 4  <transition-2-0>  <transition-2-1>  <transition-2-2>  <transition-2-3> 
+
+<transitions-3> ::= --n3 1  <transition-3-0>  | --n3 2  <transition-3-0>  <transition-3-1>  | --n3 3  <transition-3-0>  <transition-3-1>  <transition-3-2>  | --n3 4  <transition-3-0>  <transition-3-1>  <transition-3-2>  <transition-3-3> 
+
+<transition-0-0> ::=   <black_floor-0-0> | <gray_floor-0-0> | <white_floor-0-0> | <fixed_potability-0-0> |  <light-0-0> | <neighbors_count-0-0>  | <inverted_neighbors_count-0-0> 
+
+<black_floor-0-0>               ::= --n0x0 GE_RANGE:3 --c0x0 0 --p0x0 <percent> 
+<gray_floor-0-0>                ::= --n0x0 GE_RANGE:3 --c0x0 1 --p0x0 <percent> 
+<white_floor-0-0>               ::= --n0x0 GE_RANGE:3 --c0x0 2 --p0x0 <percent> 
+<neighbors_count-0-0>           ::= --n0x0 GE_RANGE:3 --c0x0 3 --p0x0 <1-10> --w0x0 <0-20> 
+<inverted_neighbors_count-0-0>  ::= --n0x0 GE_RANGE:3 --c0x0 4 --p0x0 <1-10> --w0x0 <0-20> 
+<fixed_potability-0-0>          ::= --n0x0 GE_RANGE:3 --c0x0 5 --p0x0 <percent> 
+<light-0-0>                     ::= --n0x0 GE_RANGE:3 --c0x0 6 --p0x0 <percent> 
+
+
+<transition-1-0> ::=   <black_floor-1-0> | <gray_floor-1-0> | <white_floor-1-0> | <fixed_potability-1-0> |  <light-1-0> | <neighbors_count-1-0>  | <inverted_neighbors_count-1-0> 
+
+<black_floor-1-0>               ::= --n1x0 GE_RANGE:3 --c1x0 0 --p1x0 <percent> 
+<gray_floor-1-0>                ::= --n1x0 GE_RANGE:3 --c1x0 1 --p1x0 <percent> 
+<white_floor-1-0>               ::= --n1x0 GE_RANGE:3 --c1x0 2 --p1x0 <percent> 
+<neighbors_count-1-0>           ::= --n1x0 GE_RANGE:3 --c1x0 3 --p1x0 <1-10> --w1x0 <0-20> 
+<inverted_neighbors_count-1-0>  ::= --n1x0 GE_RANGE:3 --c1x0 4 --p1x0 <1-10> --w1x0 <0-20> 
+<fixed_potability-1-0>          ::= --n1x0 GE_RANGE:3 --c1x0 5 --p1x0 <percent> 
+<light-1-0>                     ::= --n1x0 GE_RANGE:3 --c1x0 6 --p1x0 <percent> 
+
+
+<transition-1-1> ::=   <black_floor-1-1> | <gray_floor-1-1> | <white_floor-1-1> | <fixed_potability-1-1> |  <light-1-1> | <neighbors_count-1-1>  | <inverted_neighbors_count-1-1> 
+
+<black_floor-1-1>               ::= --n1x1 GE_RANGE:3 --c1x1 0 --p1x1 <percent> 
+<gray_floor-1-1>                ::= --n1x1 GE_RANGE:3 --c1x1 1 --p1x1 <percent> 
+<white_floor-1-1>               ::= --n1x1 GE_RANGE:3 --c1x1 2 --p1x1 <percent> 
+<neighbors_count-1-1>           ::= --n1x1 GE_RANGE:3 --c1x1 3 --p1x1 <1-10> --w1x1 <0-20> 
+<inverted_neighbors_count-1-1>  ::= --n1x1 GE_RANGE:3 --c1x1 4 --p1x1 <1-10> --w1x1 <0-20> 
+<fixed_potability-1-1>          ::= --n1x1 GE_RANGE:3 --c1x1 5 --p1x1 <percent> 
+<light-1-1>                     ::= --n1x1 GE_RANGE:3 --c1x1 6 --p1x1 <percent> 
+
+
+<transition-2-0> ::=   <black_floor-2-0> | <gray_floor-2-0> | <white_floor-2-0> | <fixed_potability-2-0> |  <light-2-0> | <neighbors_count-2-0>  | <inverted_neighbors_count-2-0> 
+
+<black_floor-2-0>               ::= --n2x0 GE_RANGE:3 --c2x0 0 --p2x0 <percent> 
+<gray_floor-2-0>                ::= --n2x0 GE_RANGE:3 --c2x0 1 --p2x0 <percent> 
+<white_floor-2-0>               ::= --n2x0 GE_RANGE:3 --c2x0 2 --p2x0 <percent> 
+<neighbors_count-2-0>           ::= --n2x0 GE_RANGE:3 --c2x0 3 --p2x0 <1-10> --w2x0 <0-20> 
+<inverted_neighbors_count-2-0>  ::= --n2x0 GE_RANGE:3 --c2x0 4 --p2x0 <1-10> --w2x0 <0-20> 
+<fixed_potability-2-0>          ::= --n2x0 GE_RANGE:3 --c2x0 5 --p2x0 <percent> 
+<light-2-0>                     ::= --n2x0 GE_RANGE:3 --c2x0 6 --p2x0 <percent> 
+
+
+<transition-2-1> ::=   <black_floor-2-1> | <gray_floor-2-1> | <white_floor-2-1> | <fixed_potability-2-1> |  <light-2-1> | <neighbors_count-2-1>  | <inverted_neighbors_count-2-1> 
+
+<black_floor-2-1>               ::= --n2x1 GE_RANGE:3 --c2x1 0 --p2x1 <percent> 
+<gray_floor-2-1>                ::= --n2x1 GE_RANGE:3 --c2x1 1 --p2x1 <percent> 
+<white_floor-2-1>               ::= --n2x1 GE_RANGE:3 --c2x1 2 --p2x1 <percent> 
+<neighbors_count-2-1>           ::= --n2x1 GE_RANGE:3 --c2x1 3 --p2x1 <1-10> --w2x1 <0-20> 
+<inverted_neighbors_count-2-1>  ::= --n2x1 GE_RANGE:3 --c2x1 4 --p2x1 <1-10> --w2x1 <0-20> 
+<fixed_potability-2-1>          ::= --n2x1 GE_RANGE:3 --c2x1 5 --p2x1 <percent> 
+<light-2-1>                     ::= --n2x1 GE_RANGE:3 --c2x1 6 --p2x1 <percent> 
+
+
+<transition-2-2> ::=   <black_floor-2-2> | <gray_floor-2-2> | <white_floor-2-2> | <fixed_potability-2-2> |  <light-2-2> | <neighbors_count-2-2>  | <inverted_neighbors_count-2-2> 
+
+<black_floor-2-2>               ::= --n2x2 GE_RANGE:3 --c2x2 0 --p2x2 <percent> 
+<gray_floor-2-2>                ::= --n2x2 GE_RANGE:3 --c2x2 1 --p2x2 <percent> 
+<white_floor-2-2>               ::= --n2x2 GE_RANGE:3 --c2x2 2 --p2x2 <percent> 
+<neighbors_count-2-2>           ::= --n2x2 GE_RANGE:3 --c2x2 3 --p2x2 <1-10> --w2x2 <0-20> 
+<inverted_neighbors_count-2-2>  ::= --n2x2 GE_RANGE:3 --c2x2 4 --p2x2 <1-10> --w2x2 <0-20> 
+<fixed_potability-2-2>          ::= --n2x2 GE_RANGE:3 --c2x2 5 --p2x2 <percent> 
+<light-2-2>                     ::= --n2x2 GE_RANGE:3 --c2x2 6 --p2x2 <percent> 
+
+
+<transition-3-0> ::=   <black_floor-3-0> | <gray_floor-3-0> | <white_floor-3-0> | <fixed_potability-3-0> |  <light-3-0> | <neighbors_count-3-0>  | <inverted_neighbors_count-3-0> 
+
+<black_floor-3-0>               ::= --n3x0 GE_RANGE:3 --c3x0 0 --p3x0 <percent> 
+<gray_floor-3-0>                ::= --n3x0 GE_RANGE:3 --c3x0 1 --p3x0 <percent> 
+<white_floor-3-0>               ::= --n3x0 GE_RANGE:3 --c3x0 2 --p3x0 <percent> 
+<neighbors_count-3-0>           ::= --n3x0 GE_RANGE:3 --c3x0 3 --p3x0 <1-10> --w3x0 <0-20> 
+<inverted_neighbors_count-3-0>  ::= --n3x0 GE_RANGE:3 --c3x0 4 --p3x0 <1-10> --w3x0 <0-20> 
+<fixed_potability-3-0>          ::= --n3x0 GE_RANGE:3 --c3x0 5 --p3x0 <percent> 
+<light-3-0>                     ::= --n3x0 GE_RANGE:3 --c3x0 6 --p3x0 <percent> 
+
+
+<transition-3-1> ::=   <black_floor-3-1> | <gray_floor-3-1> | <white_floor-3-1> | <fixed_potability-3-1> |  <light-3-1> | <neighbors_count-3-1>  | <inverted_neighbors_count-3-1> 
+
+<black_floor-3-1>               ::= --n3x1 GE_RANGE:3 --c3x1 0 --p3x1 <percent> 
+<gray_floor-3-1>                ::= --n3x1 GE_RANGE:3 --c3x1 1 --p3x1 <percent> 
+<white_floor-3-1>               ::= --n3x1 GE_RANGE:3 --c3x1 2 --p3x1 <percent> 
+<neighbors_count-3-1>           ::= --n3x1 GE_RANGE:3 --c3x1 3 --p3x1 <1-10> --w3x1 <0-20> 
+<inverted_neighbors_count-3-1>  ::= --n3x1 GE_RANGE:3 --c3x1 4 --p3x1 <1-10> --w3x1 <0-20> 
+<fixed_potability-3-1>          ::= --n3x1 GE_RANGE:3 --c3x1 5 --p3x1 <percent> 
+<light-3-1>                     ::= --n3x1 GE_RANGE:3 --c3x1 6 --p3x1 <percent> 
+
+
+<transition-3-2> ::=   <black_floor-3-2> | <gray_floor-3-2> | <white_floor-3-2> | <fixed_potability-3-2> |  <light-3-2> | <neighbors_count-3-2>  | <inverted_neighbors_count-3-2> 
+
+<black_floor-3-2>               ::= --n3x2 GE_RANGE:3 --c3x2 0 --p3x2 <percent> 
+<gray_floor-3-2>                ::= --n3x2 GE_RANGE:3 --c3x2 1 --p3x2 <percent> 
+<white_floor-3-2>               ::= --n3x2 GE_RANGE:3 --c3x2 2 --p3x2 <percent> 
+<neighbors_count-3-2>           ::= --n3x2 GE_RANGE:3 --c3x2 3 --p3x2 <1-10> --w3x2 <0-20> 
+<inverted_neighbors_count-3-2>  ::= --n3x2 GE_RANGE:3 --c3x2 4 --p3x2 <1-10> --w3x2 <0-20> 
+<fixed_potability-3-2>          ::= --n3x2 GE_RANGE:3 --c3x2 5 --p3x2 <percent> 
+<light-3-2>                     ::= --n3x2 GE_RANGE:3 --c3x2 6 --p3x2 <percent> 
+
+
+<transition-3-3> ::=   <black_floor-3-3> | <gray_floor-3-3> | <white_floor-3-3> | <fixed_potability-3-3> |  <light-3-3> | <neighbors_count-3-3>  | <inverted_neighbors_count-3-3> 
+
+<black_floor-3-3>               ::= --n3x3 GE_RANGE:3 --c3x3 0 --p3x3 <percent> 
+<gray_floor-3-3>                ::= --n3x3 GE_RANGE:3 --c3x3 1 --p3x3 <percent> 
+<white_floor-3-3>               ::= --n3x3 GE_RANGE:3 --c3x3 2 --p3x3 <percent> 
+<neighbors_count-3-3>           ::= --n3x3 GE_RANGE:3 --c3x3 3 --p3x3 <1-10> --w3x3 <0-20> 
+<inverted_neighbors_count-3-3>  ::= --n3x3 GE_RANGE:3 --c3x3 4 --p3x3 <1-10> --w3x3 <0-20> 
+<fixed_potability-3-3>          ::= --n3x3 GE_RANGE:3 --c3x3 5 --p3x3 <percent> 
+<light-3-3>                     ::= --n3x3 GE_RANGE:3 --c3x3 6 --p3x3 <percent> 
+
+
+
+
+<percent>  ::= <0-1_i>.GE_RANGE:99
+<1-10>     ::= <1-10_i>.GE_RANGE:99
+<0-20>     ::= GE_RANGE:20.GE_RANGE:99
+
+<1-10_i>   ::= 1|2|3|4|5|6|7|8|9|10
+<0-1_i>    ::= 0|1
