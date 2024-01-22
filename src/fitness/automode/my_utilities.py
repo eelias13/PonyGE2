@@ -1,9 +1,12 @@
+
+
+
 import subprocess
 
 
 
-seed = 0
-controller_cmd = ["--nstates", "1", "--s0", "0", "--rwm0", "1"]
+# seed = 0
+# controller_cmd = ["--nstates", "1", "--s0", "0", "--rwm0", "1"]
 
 
 import numpy as np

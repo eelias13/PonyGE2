@@ -1,6 +1,8 @@
+
 import numpy as np
 
 DENSITY_RADIUS = 0.01
+SWARM_MODE_DIST = 0.01
 
 
 def fitness_function(sim_swarm_pos: list, real_swarm_pos: list) -> float:
@@ -79,7 +81,6 @@ def max_dist(swarm_pos1: np.ndarray, swarm_pos2: np.ndarray) -> float:
     #from itertools import starmap
     #return max(list(starmap(lambda pos1, pos2: np.linalg.norm(pos1 - pos2), zip(swarm_pos1, swarm_pos2))))
 
-
 def swarm_mode_index(swarm_pos: np.ndarray, center_of_mass:np.ndarray) -> float:
     """3-Swarm mode index is used to measure the frequency of the swarm motion.
 
@@ -87,14 +88,63 @@ def swarm_mode_index(swarm_pos: np.ndarray, center_of_mass:np.ndarray) -> float:
 
     The swarm mode is defined as a location in the x and the y direction with maximum frequency among all agent's locations. 
     
-    The frequency of location l in the x or the y direction is computed using the following formula"""
-    swarm_mode = find_swarm_mode(swarm_pos)
-    swarm_mode_index = dist(center_of_mass, swarm_mode)
+    The frequency of location l in the x or the y direction is computed using the following formula
+    
+
+                    n
+    frequency(l) = sum 1
+                   i=0
+                distance(l, li) < 0.1
+    """
+
+    swarm_mode = []
+    for pos in swarm_pos:
+        neighbor_count = [0, 0]
+        for other_pos in swarm_pos:
+            if pos == other_pos:
+                continue
+            if abs(pos[0] - other_pos[0]) < SWARM_MODE_DIST:
+                neighbor_count[0] += 1
+            if abs(pos[1] - other_pos[1]) < SWARM_MODE_DIST:
+                neighbor_count[1] += 1
+        swarm_mode.append(neighbor_count)
+
+    max_mode_x = 0
+    max_mode_y = 0
+    
+    index_x = 0
+    index_y = 0
+
+    for i, mode in enumerate(swarm_mode):
+        if mode[0] > max_mode_x:
+            max_mode_x = mode[0]
+            index_x = i
+        if mode[1] > max_mode_y:
+            max_mode_y = mode[1]
+            index_y = i
+    
+    swarm_mode_x = swarm_pos[index_x][0]
+    swarm_mode_y = swarm_pos[index_y][1]
+
+    swarm_mode_index = dist(center_of_mass, np.array([swarm_mode_x, swarm_mode_y]))
     return swarm_mode_index
 
-def find_swarm_mode(swarm_pos: np.ndarray) -> float:
-    flat_positions = swarm_pos.flatten()
-    swarm_mode = np.argmax(np.bincount(flat_positions))
-    swarm_mode = np.unravel_index(swarm_mode, swarm_pos.shape)
-    return swarm_mode
+def beta_index(swarm_pos: np.ndarray) -> float:
+    average_dist = 0
+    for pos in swarm_pos:
+        for other_pos in swarm_pos:
+            if pos == other_pos:
+                continue
+            average_dist += dist(pos, other_pos)
+    
+    average_dist = float(average_dist) / float(len(swarm_pos))
+    
+    num_of_path = 0
+    for pos in swarm_pos:
+        for other_pos in swarm_pos:
+            if pos == other_pos:
+                continue
+            if dist(pos, other_pos) < average_dist:
+                num_of_path += 1
 
+    return float(num_of_path) / float(len(swarm_pos))
