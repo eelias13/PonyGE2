@@ -1,7 +1,7 @@
 
 def node(id: int) -> str:
   result = ""
-  result += f"""<node-{id}> := \
+  result += f"""<node-{id}> ::= \
   <explore-{id}> | <stop-{id}> |<phototaxis-{id}> | <anti_phototaxis-{id}> | <attraction-{id}> | <repulsion-{id}>\n\n"""
   
   result += f"<explore-{id}>           ::= --s{id} 0 --rwm{id} GE_RANGE:100\n"
@@ -58,10 +58,11 @@ def fsm(nodes:int):
     result += "\n\n"
     result += transitions(i, nodes)
   
+
   for i in range(0,nodes):
-    for j in range(0,i+1):
+    for j in range(0,nodes):
       result += "\n\n"
-      result += transition(i, j, nodes)
+      result += transition(j, i, nodes)
 
   result += "\n\n\n\n"
   result += "<percent>  ::= <0-1_i>.GE_RANGE:99\n"
