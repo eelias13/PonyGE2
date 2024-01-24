@@ -7,12 +7,14 @@ MAX_GENOME_LENGTH:      5000
 GRAMMAR_FILE:           automode_fsm.bnf
 INITIALISATION:         PI_grow
 INVALID_SELECTION:      False
+TARGET:                 /home/elias/code/automode-eval/target/release/automode-eval
 MAX_INIT_TREE_DEPTH:    100
 MAX_TREE_DEPTH:         170
 MUTATION:               subtree
-POPULATION_SIZE:        500
+MUTATION_PROBABILITY:   0.3
+POPULATION_SIZE:        50
 FITNESS_FUNCTION:       automode.AutomodeEval
 REPLACEMENT:            generational
 SELECTION:              tournament
-TOURNAMENT_SIZE:        10
+TOURNAMENT_SIZE:        3
 VERBOSE:                False
