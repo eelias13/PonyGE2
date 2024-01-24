@@ -14,7 +14,7 @@ class AutomodeEval(base_ff):
         
     def evaluate(self, ind, **kwargs):
         controller = ind.phenotype.split(" ")
-        args = [ self.eval_bin ]
+        args = [ self.eval_bin, "--eval-controller" ]
 
         args.extend(controller)
         p = subprocess.Popen(args, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
