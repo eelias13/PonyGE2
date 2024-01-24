@@ -20,4 +20,8 @@ class AutomodeEval(base_ff):
         p = subprocess.Popen(args, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
         (stdout, stderr) = p.communicate()
         fitness = stdout.decode('utf-8')
-        return float(fitness)
+        try:
+            fitness = float(fitness)
+        except:
+            fitness = -100
+        return fitness
